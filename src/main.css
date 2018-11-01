@@ -1,0 +1,12 @@
+h1 {
+    text-align: center;
+}
+.task-done{
+    background-color: lightgray;
+    
+}
+.pointer {cursor: pointer;}
+
+#tabla th:first-child {
+  width: 95%;
+}

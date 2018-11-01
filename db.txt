@@ -1,0 +1,86 @@
+import idb from 'idb';
+
+if (!('indexedDB' in window)) {
+    console.log('This browser doesn\'t support IndexedDB');
+} else {
+    //var dbPromise = idb.open('todoList', 1);
+
+    //Creacion de una tabla
+    var dbPromise = idb.open('todoList', 1, function (upgradeDb) {
+        console.log('making a new object store');
+        if (!upgradeDb.objectStoreNames.contains('tasksDB')) {
+            var tasksObjStore = upgradeDb.createObjectStore('tasks', { keyPath: 'id', autoIncrement: true });
+            tasksObjStore.createIndex('id', 'id', { unique: true });
+        }
+    });
+
+    //Operaciones sobre Tables
+    /*
+     Get database object
+     Open transaction on database
+     Open object store on transaction
+     Perform operation on object store
+    */
+    //Creacion de data
+    /*
+    dbPromise.then(function(db){
+        var tx = db.transaction('tasks', 'readwrite');
+        var store = tx.objectStore('tasks');
+        var task = {
+            name: 'Tarea 1',
+            done: false,
+            createdAt: new Date().getTime()
+          };
+          store.add(task);
+          return tx.complete;
+    }).then(function(data){
+       console.log("Registro añadido");
+    });
+     */
+
+     //Consultas
+     //Hay que pasarle el campo del primeray key, sino encuentra devuelve un undefined
+     dbPromise.then(function(db) {
+        var tx = db.transaction('tasks', 'readonly');
+        var store = tx.objectStore('tasks');
+        return store.get(3);
+      }).then(function(val) {
+        console.dir(val);
+      });
+
+      //GetAll
+      dbPromise.then(db => {
+        return db.transaction('tasks')
+          .objectStore('tasks').getAll();
+      }).then(allObjs => console.log(allObjs));
+
+
+      //Update
+
+      dbPromise.then(function(db) {
+        var tx = db.transaction('tasks', 'readwrite');
+        var store = tx.objectStore('tasks');
+        var item = {
+          id: 5,
+          name: 'Tarea modificada',
+          done: true,
+          modifiedAt: new Date().getTime()
+        };
+        store.put(item);
+        return tx.complete;
+      }).then(function() {
+        console.log('item updated!');
+      });
+
+      //Delete
+      dbPromise.then(function(db) {
+        var tx = db.transaction('tasks', 'readwrite');
+        var store = tx.objectStore('tasks');
+        store.delete(4);
+        return tx.complete;
+      }).then(function() {
+        console.log('Item deleted');
+      });
+
+      
+}

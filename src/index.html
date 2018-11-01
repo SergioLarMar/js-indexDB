@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>TodoList Sprint1</title>
+</head>
+
+<body>
+    <div class="w3-container">
+        <h1>TodoList - Sprint 1</h1>
+        <p>Esta practica es un todolist que añade los elementos en el localstorage, para mas informacion,
+            leer la documentacion adjunta al proyecto</p>
+
+        <div class="w3-container w3-card-4 ">
+            <form class="">
+                <h2>Introduzca tarea</h2>
+
+                <div class="w3-panel w3-red w3-display-container w3-hide" id="error">
+                    <span id="btnError" class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+                    <h3>¡¡Error!!</h3>
+                    <p id="msg"></p>
+                </div>
+
+                <p><label>Tarea</label>
+                    <input class="w3-input w3-border w3-round" name="item" type="text" autofocus placeholder="Introduzca tarea"
+                        id="txtTask"></p>
+                <input type="hidden" id="idTask" value="">
+                <p><button class="w3-btn w3-black" id="btnTask">Añadir</button>  <button class="w3-btn w3-black w3-hide" id="btnCancelar">Cancelar</button></p>
+            </form>
+
+            <div class="w3-container w3-padding-16" id="contenedortabla">
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

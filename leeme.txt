@@ -1,0 +1,25 @@
+SPRINT 1.2 TodoList
+
+TodoList Simple basado en VanillaJS e IndexedDB
+
+
+
+// Instalacion de la BBD en el ambito global
+npm install idb     -> se instala de forma global
+
+
+Instalacion de firebase (se requiere de un poryecto creado de Firebase):
+- npm install -g firebase-tools
+- Se hace login en el sistema base mediante : firebase login
+- firebase init en la carpeta del poryecto, genera unos ficheros y lanza un asistente
+- Solo seleccionar el hosting del firebase como elemento a usar
+- Te pregunta si la carpeta de public contiene el codigo, decirle que DIST
+- Te pregunta si el fichero SPA es index.html y si te lo machaca creandote uno Firebase, cuidado con esto decir que no lo machaque.
+
+- Generar version de producion mediante npm run build
+
+- Para despliegue hacer > firebase deploy
+
+
+
+
